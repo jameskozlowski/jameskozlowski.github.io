@@ -1,81 +1,353 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>jameskozlowski.com - Home</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <div class="headercontainer">
-        <div class="home">
-        <a class="home" href="#">James Kozlowski</a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Kozlowski</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#home" class="logo">jk.</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#brain-blobs">Brain Blobs</a></li>
+            </ul>
         </div>
-        <nav class = headernav>
+    </nav>
 
-        </nav>
-      </div>
-    </header>
-    <main>
-      
-<div class="parent-container">
-  <div class="child-container">
-    <p class="paragraph">
-      <img class="photo" src="james.png"/>
-      <span class="text">
-            <b>Hello, my name is James Kozlowski</b>, I am a backend software developer currently working for IBM and residing in Fredericton, NB Canada.
-           <BR><BR>
-            My current employment involves programing primarily in Java, with some work done in golang, Rust, python, bash and some light html.
-            Other technology's uses include PostgresSQL, IntelliJ, Jira, jenkins, docker/Podman
-            <BR><BR>
-            I also have a few side projects you can read about here, as well as some of the books and training here.
-            <BR>
-            Please feel free to check me out on <a href="https://github.com/jameskozlowski">github</a> or <a href="https://www.linkedin.com/in/james-kozlowski/">Linkedin</a>
-      </span>
-    </p>
-    <p>
-        <BR><BR>
-            <h3>Below is a short list of a small number of personal projects I have worked on recently.</h3>
-            <b>Random number API with Free Will Random Number Generator</b><BR>
-            <a href="https://github.com/jameskozlowski/randomnumberapi-go">Github project</a><BR>
-            A simple web API built using golang that can use hashed reddit.com comments as seeds to generate random numbers.
-            The idea behind this, is that if you beleve in fee will, then these seeds should be random<BR>
-            <i>Technologies used: GOlang, Docker/Podman.</i>
-            <BR><BR>
-        
-            <b>Random number discord bot</b><BR>
-            <a href="https://github.com/jameskozlowski/randomnumberapi-bot">Github project</a><BR>
-            A simple discord bot that allows the user to request a random number or a reddit random number using the random
-            number API created above.<BR>
-            <i>Technologies used: GOlang, Docker/Podman</i>
-            <BR><BR>
-        
-            <b>Chip8-C</b><BR>
-            <a href="https://github.com/jameskozlowski/Chip8-C">Github project</a><BR>
-            A chip-8 emulator written in C with a C++ front end. It also includes a simple debugger, disassembler and assembler.
-            Chip-8 is a simple, interpreted, programming language which was first used on some do-it-yourself computer systems
-            in the late 1970s and early 1980s.<BR>
-            <i>Technologies used: C, C++, Simple and Fast Multimedia Library</i>
-            <BR><BR>
-        
-            <b>Thermal Toolbox mobile application</b><BR>
-            A simple Mobile application that provided offline ports of some of the tools available from thermtest.com T
-            his application was built and released on both IOS and Android.
-            <BR>
-            <i>Technologies used: Java, Android</i>
-            <BR><BR>
-    </p>
-    <p>
-        <h3>Some recently read books</h3>
-        <ul>
-            <LI><a href="https://lets-go.alexedwards.net/">Let's Go - Alex Edwards</a></LI>
-            <LI><a href="https://lets-go-further.alexedwards.net/">Let's Go further - Alex Edwards</a></LI>
-            <li><a href="https://www.zero2prod.com/index.html">Zero To Production In Rust</a></li>
-        </ul>
-    </p>
-  </div>
-</div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="greeting">Hello, I'm</p>
+                <h1>James Kozlowski</h1>
+                <p class="tagline">Senior Software Developer @ MinuteBox</p>
+                <p class="location">📍 Fredericton, NB, Canada</p>
+                <div class="hero-links">
+                    <a href="https://github.com/jameskozlowski" target="_blank" class="btn">GitHub</a>
+                    <a href="https://www.linkedin.com/in/jameskozlowski" target="_blank" class="btn btn-outline">LinkedIn</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="IMG_3494.jpeg" alt="James Kozlowski" class="profile-pic">
+            </div>
+        </div>
+    </section>
 
-    </main>
-  </body>
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Highly skilled and motivated Senior Software Developer with a strong background in backend development. Experienced as a team leader and working independently with strong organizational and time management skills. Currently at <strong>MinuteBox</strong>, building with <strong>Golang</strong>, <strong>TypeScript</strong>, and <strong>Google Cloud</strong>.</p>
+                    <p>I love diving deep into systems programming and exploring AI development tools. When I'm not coding, you'll find me exploring new programming languages, reading tech books, or working on innovative software projects.</p>
+                </div>
+                <div class="about-image">
+                    <img src="IMG_0537.jpeg" alt="James coding" class="about-pic">
+                </div>
+            </div>
+            <div class="tech-stack">
+                <h3>Tech Stack</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">Golang</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Bash</span>
+                    <span class="tech-tag">Google Cloud</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Git</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">AI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Developer</h3>
+                        <p class="company">MinuteBox</p>
+                        <p class="period">November 2023 - Present</p>
+                        <ul>
+                            <li>Integrated third party services into our product using APIs</li>
+                            <li>Fixed bugs and added features using Golang, Typescript and Google Cloud</li>
+                            <li>Built internal API to access our services including filings and searches API functions</li>
+                            <li>Helped shape internal AI development tools</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Security Software Developer</h3>
+                        <p class="company">IBM</p>
+                        <p class="period">May 2021 - September 2023</p>
+                        <ul>
+                            <li>Integrated RHEL systems and tools, optimizing functionality</li>
+                            <li>Proficiently used JAVA and gained experience in PostgreSQL, BASH, Python, and Go for collaborative cross-team projects</li>
+                            <li>Worked on multiple cross-team projects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Product Engineer</h3>
+                        <p class="company">IBM</p>
+                        <p class="period">May 2020 - May 2021</p>
+                        <ul>
+                            <li>Troubleshot and resolved complex code and system challenges</li>
+                            <li>Delivered high-level customer support as a third-line responder</li>
+                            <li>Collaborated with Level 2 and development teams to investigate and resolve problems</li>
+                            <li>Created and deployed effective workarounds and hot fixes when necessary</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>R&D Team Lead, Software Developer</h3>
+                        <p class="company">Thermtest</p>
+                        <p class="period">November 2012 - April 2020</p>
+                        <ul>
+                            <li>Managed daily activities of R&D and production teams while maintaining accurate records</li>
+                            <li>Built internal systems and CI pipelines for both internal tools and customer facing software</li>
+                            <li>Demonstrated versatility in coding through embedded and desktop programming</li>
+                            <li>Successfully applied for and completed an IRAP project</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-section">
+                <h3>Education</h3>
+                <div class="education-card">
+                    <h4>Certificate in Software Development</h4>
+                    <p class="company">University of New Brunswick</p>
+                    <p class="period">2016 - 2018</p>
+                </div>
+                <div class="education-card">
+                    <h4>Information Systems Specialist with Cisco</h4>
+                    <p class="company">CompuCollege</p>
+                    <p class="period">2002 - 2004</p>
+                </div>
+            </div>
+
+            <div class="patents-section">
+                <h3>Patents</h3>
+                <div class="patent-card">
+                    <h4>Temperature Control Device And Temperature Control Method</h4>
+                    <p class="patent-meta">US 16/592,858 · Filed Oct 4, 2019</p>
+                    <p class="patent-desc">A device using opposing hot and cold cells to provide a fast stable temperature environment for thermal conductivity testing.</p>
+                </div>
+                <div class="patent-card">
+                    <h4>Use of Latching Relays in Signal Switching</h4>
+                    <p class="patent-meta">CA 2819325 · Filed Jun 26, 2013</p>
+                    <p class="patent-desc">A device for switching signals from multiple sources to a single testing or measuring device using latching relays.</p>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <h3>Featured Projects</h3>
+                <div class="project-card">
+                    <h4>Random Number API</h4>
+                    <p>A web API built in Go that uses hashed Reddit comments as seeds for random number generation. If you believe in free will, the seeds should be truly random.</p>
+                    <div class="project-tech">
+                        <span>Go</span>
+                        <span>Docker</span>
+                    </div>
+                    <a href="https://github.com/jameskozlowski/randomnumberapi-go" target="_blank" class="project-link">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <h4>Chip8-C</h4>
+                    <p>A Chip-8 emulator written in C with a C++ frontend. Includes a debugger, disassembler, and assembler. A deep dive into low-level programming.</p>
+                    <div class="project-tech">
+                        <span>C</span>
+                        <span>C++</span>
+                    </div>
+                    <a href="https://github.com/jameskozlowski/Chip8-C" target="_blank" class="project-link">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <h4>Random Number Discord Bot</h4>
+                    <p>A Discord bot that generates random numbers using the Random Number API. Fun little project for the community.</p>
+                    <div class="project-tech">
+                        <span>Go</span>
+                        <span>Docker</span>
+                    </div>
+                    <a href="https://github.com/jameskozlowski/randomnumberapi-bot" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies" class="section">
+        <div class="container">
+            <h2 class="section-title">Hobbies & Interests</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <h3><span class="hobby-icon">💻</span> Tech & Projects</h3>
+                    <p>I love diving into tech, working on side projects, and constantly learning new things. From building emulators to exploring new languages, there's always something to create.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3><span class="hobby-icon">🥾</span> Hiking & Trails</h3>
+                    <p>I enjoy getting outside and exploring trails. There's nothing better than discovering new paths and enjoying nature while staying active.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3><span class="hobby-icon">🔨</span> Building & Making</h3>
+                    <p>I love building things with my hands - whether it's woodworking projects or welding metal. There's something satisfying about creating physical objects from scratch.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3><span class="hobby-icon">🤖</span> AI Development</h3>
+                    <p>I'm fascinated by the constantly changing world of AI. I enjoy exploring new AI tools, techniques, and integrating them into development workflows.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3><span class="hobby-icon">🥃</span> Whiskey Explorer</h3>
+                    <p>I enjoy exploring quality whiskey, scotch, and bourbon. Tasting different distilleries and learning about the craft behind each bottle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brain-blobs" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Brain Blobs 🧠</h2>
+            <p class="section-subtitle">Thoughts, learnings, and discoveries from the lab</p>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <span class="blog-date">Feb 2026</span>
+                    <h3><span class="blog-title-styled">J<span class="bracket">{</span>AI<span class="bracket">}</span>MES</span> - My AI Coding Setup</h3>
+                    <p>How I've been experimenting with opencode and building a personal AI coding workflow.</p>
+                    <div class="blog-content" style="display: none;">
+                        <h4>The Setup</h4>
+                        <p>At work, I've been using Claude Code - it's solid and integrates well with our development workflow. But lately I've been playing around with opencode and honestly, it's been pretty impressive.</p>
+                        <h4>The Migration</h4>
+                        <p>I ported over most of my agents and skills from Claude Code to opencode. The process was smoother than I expected, and now I have a pretty similar setup running in both environments.</p>
+                        <h4>The Anthropic Situation</h4>
+                        <p>Here's where things got frustrating. Anthropic's Claude Code Max plans will NOT let you log in directly - you have to use an API key. And API usage adds up quickly. It's pricey for everyday use.</p>
+                        <p>So at work, I've switched to OpenAI's Pro plan instead. They support direct login, it's more predictable in terms of cost, and honestly it's been working great for what I need.</p>
+                        <h4>Personal Use</h4>
+                        <p>For my personal projects, I'm on a basic Pro plan with OpenAI/GPT. Combined with OpenCode Zen (which gives pay-as-you-go access to different API models), I've got a solid setup that fills in the gaps. It's not perfect, but it's working nicely for side projects and experimenting.</p>
+                        <h4>The Verdict</h4>
+                        <p>Having multiple tools in the toolbox has been surprisingly useful. Each has its strengths, and being able to switch between them depending on the task is pretty powerful. Plus, having Zen as a backup when I need other models is clutch.</p>
+                    </div>
+                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                </article>
+                <article class="blog-card">
+                    <span class="blog-date">Nov 2025</span>
+                    <h3>Zero to Production in Rust - Book Review</h3>
+                    <p>A deep dive into the book everyone's talking about. Is it worth the hype? My thoughts after building along with the exercises.</p>
+                    <div class="blog-content" style="display: none;">
+                        <h4>Overview</h4>
+                        <p>"Zero to Production in Rust" by Luca Palmieri is a hands-on guide to building production-ready Rust applications. It covers everything from project setup to deployment.</p>
+                        <h4>What I Liked</h4>
+                        <ul>
+                            <li>Real-world examples using Actix-web</li>
+                            <li>Excellent coverage of error handling</li>
+                            <li>Practical testing strategies</li>
+                            <li>Database integration with SQLx</li>
+                        </ul>
+                        <h4>What Could Be Better</h4>
+                        <ul>
+                            <li>Some sections feel rushed</li>
+                            <li>Would love more async deeper dives</li>
+                        </ul>
+                        <h4>Verdict</h4>
+                        <p>Highly recommended for intermediate Rust developers who want to build real systems. It's not a beginner book, but it fills a crucial gap in the Rust ecosystem.</p>
+                    </div>
+                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                </article>
+                <article class="blog-card">
+                    <span class="blog-date">Jul 2023</span>
+                    <h3>Let's Go & Let's Go Further - Book Review</h3>
+                    <p>Two fantastic books by Alex Edwards that took my Go skills to the next level. Here's why I recommend them.</p>
+                    <div class="blog-content" style="display: none;">
+                        <h4>Why These Books?</h4>
+                        <p>After having a programming background, I wanted to dive into Go. "Let's Go" was a great starting point. It starts slow but covers everything exceptionally well - from the basics to building real web applications.</p>
+                        <h4>What I Learned</h4>
+                        <ul>
+                            <li>Go fundamentals done right</li>
+                            <li>Best practices for structuring Go projects</li>
+                            <li>Building RESTful APIs</li>
+                            <li>Working with databases (PostgreSQL)</li>
+                            <li>Middleware and authentication</li>
+                        </ul>
+                        <h4>The Author's Website</h4>
+                        <p>Alex Edwards maintains an excellent blog at alexedwards.net with tutorials and guides that complement the books perfectly.</p>
+                        <h4>Staying Up to Date</h4>
+                        <p>One thing I really appreciate is how Alex keeps the books current. When a new Go version drops, he updates the books and emails purchasers with the new version. That's dedication!</p>
+                        <h4>Verdict</h4>
+                        <p>If you're looking to learn Go, start here. "Let's Go" gets you building real applications, and "Let's Go Further" takes you to advanced territory.</p>
+                    </div>
+                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                </article>
+                <article class="blog-card">
+                    <span class="blog-date">Jul 2023</span>
+                    <h3>Free Will and Random Numbers</h3>
+                    <p>Can Reddit comments be truly random? My experiment with using social media as an entropy source for random number generation.</p>
+                    <div class="blog-content" style="display: none;">
+                        <h4>The Problem with PRNGs</h4>
+                        <p>Pseudo-random number generators (PRNGs) are deterministic. Given the same seed, they'll produce the same sequence. For many applications, this is fine. But what if you want true randomness?</p>
+                        <h4>The Solution: Reddit as Entropy</h4>
+                        <p>I built an API that fetches the latest comments from Reddit, hashes them, and uses the hash as a seed. The idea is that the unpredictable nature of human comments provides true randomness.</p>
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li>Fetch trending posts from multiple subreddits</li>
+                            <li>Extract comment text and timestamps</li>
+                            <li>Hash the combined data using SHA-256</li>
+                            <li>Use the hash bytes to seed a cryptographically secure random number generator</li>
+                        </ul>
+                        <h4>Results</h4>
+                        <p>The API now serves random numbers to anyone who wants them. It's an interesting experiment in decentralized entropy!</p>
+                    </div>
+                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                </article>
+                <article class="blog-card">
+                    <span class="blog-date">Apr 2017</span>
+                    <h3>Building a Chip-8 Emulator in C</h3>
+                    <p>My journey into emulator development, from understanding the Chip-8 specification to implementing a full debugger and disassembler.</p>
+                    <div class="blog-content" style="display: none;">
+                        <h4>Why Chip-8?</h4>
+                        <p>Chip-8 is often recommended as a first emulator project because it's simple enough to complete in a weekend, yet complex enough to teach you the fundamentals of emulation.</p>
+                        <h4>The Architecture</h4>
+                        <p>Chip-8 has 35 opcodes, 16 8-bit registers, and a simple memory model. The display is 64x32 pixels, and programs start at address 0x200.</p>
+                        <h4>Key Challenges</h4>
+                        <ul>
+                            <li>Implementing the DXYN draw instruction (sprites, XOR rendering)</li>
+                            <li>Handling keyboard input and the waiting-for-key opcode</li>
+                            <li>Getting the timing right (Chip-8 runs at ~540Hz)</li>
+                        </ul>
+                        <h4>The Result</h4>
+                        <p>The finished emulator includes a built-in debugger with memory inspection, register viewing, and step-by-step execution. Check it out on GitHub!</p>
+                    </div>
+                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 James Kozlowski. Built with ☕ and curiosity.</p>
+            <div class="social-links">
+                <a href="https://github.com/jameskozlowski" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/jameskozlowski" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
