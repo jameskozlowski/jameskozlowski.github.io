@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Chip-8 Emulator in C | James Kozlowski</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../index.html#home" class="logo">jk.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#hobbies">Hobbies</a></li>
+                <li><a href="../index.html#brain-blobs">Brain Blobs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="blog-post">
+        <article>
+            <header class="post-header">
+                <span class="post-date">Apr 2017</span>
+                <h1>Building a Chip-8 Emulator in C</h1>
+                <p class="post-subtitle">My journey into emulator development, from understanding the Chip-8 specification to implementing a full debugger and disassembler.</p>
+            </header>
+
+            <div class="post-content">
+                <h4>Why Chip-8?</h4>
+                <p>Chip-8 is often recommended as a first emulator project because it's simple enough to complete in a weekend, yet complex enough to teach you the fundamentals of emulation.</p>
+
+                <h4>The Architecture</h4>
+                <p>Chip-8 has 35 opcodes, 16 8-bit registers, and a simple memory model. The display is 64x32 pixels, and programs start at address 0x200.</p>
+
+                <h4>Key Challenges</h4>
+                <ul>
+                    <li>Implementing the DXYN draw instruction (sprites, XOR rendering)</li>
+                    <li>Handling keyboard input and the waiting-for-key opcode</li>
+                    <li>Getting the timing right (Chip-8 runs at ~540Hz)</li>
+                </ul>
+
+                <h4>The Result</h4>
+                <p>The finished emulator includes a built-in debugger with memory inspection, register viewing, and step-by-step execution. Check it out on GitHub!</p>
+            </div>
+
+            <footer class="post-footer">
+                <a href="../index.html#brain-blobs" class="back-link">← Back to Brain Blobs</a>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 James Kozlowski. Built with ☕ and curiosity.</p>
+            <div class="social-links">
+                <a href="https://github.com/jameskozlowski" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/jameskozlowski" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

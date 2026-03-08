@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Will and Random Numbers | James Kozlowski</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../index.html#home" class="logo">jk.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#hobbies">Hobbies</a></li>
+                <li><a href="../index.html#brain-blobs">Brain Blobs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="blog-post">
+        <article>
+            <header class="post-header">
+                <span class="post-date">Jul 2023</span>
+                <h1>Free Will and Random Numbers</h1>
+                <p class="post-subtitle">Can Reddit comments be truly random? My experiment with using social media as an entropy source for random number generation.</p>
+            </header>
+
+            <div class="post-content">
+                <h4>The Problem with PRNGs</h4>
+                <p>Pseudo-random number generators (PRNGs) are deterministic. Given the same seed, they'll produce the same sequence. For many applications, this is fine. But what if you want true randomness?</p>
+
+                <h4>The Solution: Reddit as Entropy</h4>
+                <p>I built an API that fetches the latest comments from Reddit, hashes them, and uses the hash as a seed. The idea is that the unpredictable nature of human comments provides true randomness.</p>
+
+                <h4>Implementation</h4>
+                <ul>
+                    <li>Fetch trending posts from multiple subreddits</li>
+                    <li>Extract comment text and timestamps</li>
+                    <li>Hash the combined data using SHA-256</li>
+                    <li>Use the hash bytes to seed a cryptographically secure random number generator</li>
+                </ul>
+
+                <h4>Results</h4>
+                <p>The API now serves random numbers to anyone who wants them. It's an interesting experiment in decentralized entropy!</p>
+            </div>
+
+            <footer class="post-footer">
+                <a href="../index.html#brain-blobs" class="back-link">← Back to Brain Blobs</a>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 James Kozlowski. Built with ☕ and curiosity.</p>
+            <div class="social-links">
+                <a href="https://github.com/jameskozlowski" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/jameskozlowski" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

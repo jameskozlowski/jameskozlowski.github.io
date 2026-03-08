@@ -230,109 +230,31 @@
                     <span class="blog-date">Feb 2026</span>
                     <h3><span class="blog-title-styled">J<span class="bracket">{</span>AI<span class="bracket">}</span>MES</span> - My AI Coding Setup</h3>
                     <p>How I've been experimenting with opencode and building a personal AI coding workflow.</p>
-                    <div class="blog-content" style="display: none;">
-                        <h4>The Setup</h4>
-                        <p>At work, I've been using Claude Code - it's solid and integrates well with our development workflow. But lately I've been playing around with opencode and honestly, it's been pretty impressive.</p>
-                        <h4>The Migration</h4>
-                        <p>I ported over most of my agents and skills from Claude Code to opencode. The process was smoother than I expected, and now I have a pretty similar setup running in both environments.</p>
-                        <h4>The Anthropic Situation</h4>
-                        <p>Here's where things got frustrating. Anthropic's Claude Code Max plans will NOT let you log in directly - you have to use an API key. And API usage adds up quickly. It's pricey for everyday use.</p>
-                        <p>So at work, I've switched to OpenAI's Pro plan instead. They support direct login, it's more predictable in terms of cost, and honestly it's been working great for what I need.</p>
-                        <h4>Personal Use</h4>
-                        <p>For my personal projects, I'm on a basic Pro plan with OpenAI/GPT. Combined with OpenCode Zen (which gives pay-as-you-go access to different API models), I've got a solid setup that fills in the gaps. It's not perfect, but it's working nicely for side projects and experimenting.</p>
-                        <h4>The Verdict</h4>
-                        <p>Having multiple tools in the toolbox has been surprisingly useful. Each has its strengths, and being able to switch between them depending on the task is pretty powerful. Plus, having Zen as a backup when I need other models is clutch.</p>
-                    </div>
-                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                    <a href="blog/ai-coding-setup.html" class="read-more">Read more →</a>
                 </article>
                 <article class="blog-card">
                     <span class="blog-date">Nov 2025</span>
                     <h3>Zero to Production in Rust - Book Review</h3>
                     <p>A deep dive into the book everyone's talking about. Is it worth the hype? My thoughts after building along with the exercises.</p>
-                    <div class="blog-content" style="display: none;">
-                        <h4>Overview</h4>
-                        <p>"Zero to Production in Rust" by Luca Palmieri is a hands-on guide to building production-ready Rust applications. It covers everything from project setup to deployment.</p>
-                        <h4>What I Liked</h4>
-                        <ul>
-                            <li>Real-world examples using Actix-web</li>
-                            <li>Excellent coverage of error handling</li>
-                            <li>Practical testing strategies</li>
-                            <li>Database integration with SQLx</li>
-                        </ul>
-                        <h4>What Could Be Better</h4>
-                        <ul>
-                            <li>Some sections feel rushed</li>
-                            <li>Would love more async deeper dives</li>
-                        </ul>
-                        <h4>Verdict</h4>
-                        <p>Highly recommended for intermediate Rust developers who want to build real systems. It's not a beginner book, but it fills a crucial gap in the Rust ecosystem.</p>
-                    </div>
-                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                    <a href="blog/zero-to-production-rust.html" class="read-more">Read more →</a>
                 </article>
                 <article class="blog-card">
                     <span class="blog-date">Jul 2023</span>
                     <h3>Let's Go & Let's Go Further - Book Review</h3>
                     <p>Two fantastic books by Alex Edwards that took my Go skills to the next level. Here's why I recommend them.</p>
-                    <div class="blog-content" style="display: none;">
-                        <h4>Why These Books?</h4>
-                        <p>After having a programming background, I wanted to dive into Go. "Let's Go" was a great starting point. It starts slow but covers everything exceptionally well - from the basics to building real web applications.</p>
-                        <h4>What I Learned</h4>
-                        <ul>
-                            <li>Go fundamentals done right</li>
-                            <li>Best practices for structuring Go projects</li>
-                            <li>Building RESTful APIs</li>
-                            <li>Working with databases (PostgreSQL)</li>
-                            <li>Middleware and authentication</li>
-                        </ul>
-                        <h4>The Author's Website</h4>
-                        <p>Alex Edwards maintains an excellent blog at alexedwards.net with tutorials and guides that complement the books perfectly.</p>
-                        <h4>Staying Up to Date</h4>
-                        <p>One thing I really appreciate is how Alex keeps the books current. When a new Go version drops, he updates the books and emails purchasers with the new version. That's dedication!</p>
-                        <h4>Verdict</h4>
-                        <p>If you're looking to learn Go, start here. "Let's Go" gets you building real applications, and "Let's Go Further" takes you to advanced territory.</p>
-                    </div>
-                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                    <a href="blog/lets-go-books.html" class="read-more">Read more →</a>
                 </article>
                 <article class="blog-card">
                     <span class="blog-date">Jul 2023</span>
                     <h3>Free Will and Random Numbers</h3>
                     <p>Can Reddit comments be truly random? My experiment with using social media as an entropy source for random number generation.</p>
-                    <div class="blog-content" style="display: none;">
-                        <h4>The Problem with PRNGs</h4>
-                        <p>Pseudo-random number generators (PRNGs) are deterministic. Given the same seed, they'll produce the same sequence. For many applications, this is fine. But what if you want true randomness?</p>
-                        <h4>The Solution: Reddit as Entropy</h4>
-                        <p>I built an API that fetches the latest comments from Reddit, hashes them, and uses the hash as a seed. The idea is that the unpredictable nature of human comments provides true randomness.</p>
-                        <h4>Implementation</h4>
-                        <ul>
-                            <li>Fetch trending posts from multiple subreddits</li>
-                            <li>Extract comment text and timestamps</li>
-                            <li>Hash the combined data using SHA-256</li>
-                            <li>Use the hash bytes to seed a cryptographically secure random number generator</li>
-                        </ul>
-                        <h4>Results</h4>
-                        <p>The API now serves random numbers to anyone who wants them. It's an interesting experiment in decentralized entropy!</p>
-                    </div>
-                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                    <a href="blog/free-will-random-numbers.html" class="read-more">Read more →</a>
                 </article>
                 <article class="blog-card">
                     <span class="blog-date">Apr 2017</span>
                     <h3>Building a Chip-8 Emulator in C</h3>
                     <p>My journey into emulator development, from understanding the Chip-8 specification to implementing a full debugger and disassembler.</p>
-                    <div class="blog-content" style="display: none;">
-                        <h4>Why Chip-8?</h4>
-                        <p>Chip-8 is often recommended as a first emulator project because it's simple enough to complete in a weekend, yet complex enough to teach you the fundamentals of emulation.</p>
-                        <h4>The Architecture</h4>
-                        <p>Chip-8 has 35 opcodes, 16 8-bit registers, and a simple memory model. The display is 64x32 pixels, and programs start at address 0x200.</p>
-                        <h4>Key Challenges</h4>
-                        <ul>
-                            <li>Implementing the DXYN draw instruction (sprites, XOR rendering)</li>
-                            <li>Handling keyboard input and the waiting-for-key opcode</li>
-                            <li>Getting the timing right (Chip-8 runs at ~540Hz)</li>
-                        </ul>
-                        <h4>The Result</h4>
-                        <p>The finished emulator includes a built-in debugger with memory inspection, register viewing, and step-by-step execution. Check it out on GitHub!</p>
-                    </div>
-                    <a href="#" class="read-more" onclick="toggleBlog(this); return false;">Read more →</a>
+                    <a href="blog/chip8-emulator.html" class="read-more">Read more →</a>
                 </article>
             </div>
         </div>

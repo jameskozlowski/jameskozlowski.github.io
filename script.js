@@ -65,34 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => navObserver.observe(section));
 
-    // Add hover effects to cards
-    document.querySelectorAll('.blog-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.boxShadow = '0 8px 24px rgba(126, 231, 135, 0.15)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.boxShadow = 'none';
-        });
-    });
-
-    // Typing effect for tagline
-    const tagline = document.querySelector('.tagline');
-    if (tagline) {
-        const text = tagline.textContent;
-        tagline.textContent = '';
-        let i = 0;
-        
-        function type() {
-            if (i < text.length) {
-                tagline.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 50);
-            }
-        }
-        
-        setTimeout(type, 500);
-    }
-
     // Navbar background on scroll
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
@@ -103,25 +75,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-// Toggle blog content
-function toggleBlog(link) {
-    const blogCard = link.closest('.blog-card');
-    const content = blogCard.querySelector('.blog-content');
-    const isExpanded = blogCard.classList.contains('expanded');
-    
-    document.querySelectorAll('.blog-card.expanded').forEach(card => {
-        card.classList.remove('expanded');
-        card.querySelector('.blog-content').style.display = 'none';
-        card.querySelector('.read-more').textContent = 'Read more →';
-    });
-    
-    if (!isExpanded) {
-        blogCard.classList.add('expanded');
-        content.style.display = 'block';
-        link.textContent = 'Read less ↑';
-        setTimeout(() => {
-            blogCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
-    }
-}
