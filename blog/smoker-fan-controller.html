@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Designing a Wi-Fi Smoker Fan Controller | James Kozlowski</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../blog.css" />
+    <meta
+      name="description"
+      content="A first look at the hardware design for a Wi-Fi smoker fan controller: an ESP32-C3, thermocouple, 12 V blower, and a safety-first control loop."
+    />
+    <meta name="theme-color" content="#f5f3eb" />
+    <link
+      rel="canonical"
+      href="https://jameskozlowski.com/blog/smoker-fan-controller.html"
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <script src="../script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="navbar">
+      <nav class="nav-content" aria-label="Main navigation">
+        <a
+          href="../index.html#home"
+          class="logo"
+          aria-label="James Kozlowski home"
+          >jk<span>.</span></a
+        >
+        <ul class="nav-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#brain-blobs">Writing</a></li>
+          <li>
+            <a href="../index.html#contact"
+              >Say hello <span aria-hidden="true">↗</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="blog-post" tabindex="-1">
+      <article>
+        <a class="breadcrumb" href="../index.html#brain-blobs"
+          >← Writing / Brain blobs</a
+        >
+        <header class="post-header">
+          <time class="post-date" datetime="2026-09"
+            >Sep 2026 · Hardware &amp; experiments</time
+          >
+          <h1>Designing a Wi-Fi Smoker Fan Controller</h1>
+          <p class="post-subtitle">
+            A first look at the electronics, control strategy, and safety decisions
+            behind a small controller for holding a smoker at temperature.
+          </p>
+        </header>
+
+        <div class="post-content">
+          <h2>The idea</h2>
+          <p>
+            I want to build a small device that can help hold a charcoal or wood
+            smoker at a target temperature. The basic idea is simple: measure the
+            air temperature inside the smoker, control the amount of combustion air
+            with a blower, and make the current state visible over a local Wi-Fi
+            page.
+          </p>
+          <p>
+            This is not meant to be a gas-valve controller or a mains-powered
+            heater. It is a combustion-air controller that adds air when the fire
+            needs help and stops adding air when it does not. The fire still has
+            thermal inertia and natural draft, so turning the fan off cannot make
+            the temperature drop immediately.
+          </p>
+
+          <h2>The first build</h2>
+          <p>
+            I am deliberately starting with assembled development boards instead
+            of jumping straight to a custom PCB. The first bench prototype is built
+            around four main pieces:
+          </p>
+          <ul>
+            <li>
+              A Seeed Studio XIAO ESP32-C3 for the control logic, Wi-Fi, and local
+              web interface.
+            </li>
+            <li>
+              An Adafruit MAX31856 breakout to read an ungrounded K-type
+              thermocouple.
+            </li>
+            <li>
+              A suitable 12 V blower and a default-off MOSFET driver to switch it.
+            </li>
+            <li>
+              A small buck converter to make 5 V for the XIAO when the prototype
+              moves from separate USB and 12 V supplies to one 12 V adapter.
+            </li>
+          </ul>
+          <p>
+            The modules keep the early work focused on the parts that are hardest to
+            get right: choosing a blower, understanding its startup behavior,
+            getting reliable temperature readings, and deciding how the control loop
+            should behave. A solderless breadboard is fine for signals, but the fan
+            current will stay in properly sized wiring and connectors rather than
+            passing through breadboard contacts.
+          </p>
+
+          <h2>How the pieces fit together</h2>
+          <p>
+            A regulated 12 V input feeds the blower branch and the lower-voltage
+            electronics. The ESP32 drives the MOSFET gate, while the blower remains
+            electrically separate from the sensor circuitry as much as possible. The
+            MAX31856 talks to the ESP32 over SPI and handles the small thermocouple
+            signal, cold-junction compensation, and sensor fault reporting.
+          </p>
+          <p>
+            The initial fan is a two-wire, 12 V blower controlled with slow on/off
+            decisions. That is an important constraint: a PWM-capable MOSFET does
+            not automatically make an arbitrary two-wire blower compatible with
+            supply PWM. The first version will use full-voltage switching with
+            hysteresis and minimum on/off times. If smooth speed control or stall
+            feedback becomes necessary, I will select a documented four-wire blower
+            and design its PWM and tachometer interface around that specific model.
+          </p>
+
+          <h2>Safety is part of the design</h2>
+          <p>
+            A network connection cannot be a requirement for safe temperature
+            control. The control loop should continue locally when Wi-Fi or the
+            router is unavailable, and it should never wait for a web request before
+            making its next decision. Wi-Fi is for settings, monitoring, and
+            alarms—not for keeping the fire-control loop alive.
+          </p>
+          <p>
+            The intended default is fan off. The hardware should hold the fan off
+            during reset and startup, and the firmware should stop it for an open
+            probe, thermocouple-converter fault, stale measurement, overtemperature,
+            or local STOP command. A physical fan disconnect remains useful even if
+            the software is broken. These measures do not turn the project into a
+            certified unattended safety controller; they make the failure behavior
+            explicit and testable.
+          </p>
+
+          <h2>From prototype to PCB</h2>
+          <p>
+            Once the blower and sensor behavior are understood, the next step is a
+            small custom board around an ESP32-C3 module, a 3.3 V buck converter, a
+            MAX31856, and the verified fan-driver circuit. The layout matters as
+            much as the schematic: the thermocouple connector and converter need a
+            quiet, thermally stable area, while the fan current and buck switching
+            loops need short, deliberate power paths. The antenna also needs its
+            keepout, especially if the electronics eventually live near a metal
+            smoker.
+          </p>
+          <p>
+            The board is not the whole system. The blower needs an adapter and a
+            way to limit uncontrolled airflow when it is off. The enclosure needs
+            protection from rain, grease, ash, and heat. The probe, cable, connector,
+            fuse, wiring, and power supply all need ratings that match the real
+            installation.
+          </p>
+
+          <h2>What I am trying to learn</h2>
+          <p>
+            The project is as much about learning the boundary between software and
+            hardware as it is about making a useful smoker accessory. I want to
+            measure the real electrical behavior instead of trusting nominal current
+            ratings, understand how fan switching affects temperature readings, and
+            find a control strategy that behaves sensibly around lid openings, fuel
+            changes, and the slow response of a smoker.
+          </p>
+          <p>
+            The build sequence is intentionally conservative: manual fan testing,
+            then temperature hysteresis, then a more capable controller only if the
+            measurements justify it. Before any supervised smoker trials, I need to
+            test probe failures, resets, power cycling, Wi-Fi loss, fan startup, and
+            the cases where a sensor can return a plausible but incorrect reading.
+          </p>
+          <p>
+            For now, this is a design proposal rather than a finished product. The
+            first milestone is not a polished PCB—it is a small, well-understood
+            prototype that can control airflow predictably and fail with the fan
+            off.
+          </p>
+        </div>
+
+        <footer class="post-footer">
+          <a href="../index.html#brain-blobs" class="back-link"
+            >← Back to Brain Blobs</a
+          >
+        </footer>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          © <span data-year>2026</span> James Kozlowski. Made with curiosity.
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/jameskozlowski">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/jameskozlowski">LinkedIn ↗</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
