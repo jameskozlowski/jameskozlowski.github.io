@@ -79,7 +79,7 @@
           <p>
             I am deliberately starting with assembled development boards instead
             of jumping straight to a custom PCB. The first bench prototype is built
-            around four main pieces:
+            around five main pieces:
           </p>
           <ul>
             <li>
@@ -91,10 +91,15 @@
               thermocouple.
             </li>
             <li>
-              A suitable 12 V blower and a default-off MOSFET driver to switch it.
+              A Delta BFB0512HA-CX3D four-wire, 12 V PWM blower with separate
+              power, control, and tach leads.
             </li>
             <li>
-              A small buck converter to make 5 V for the XIAO when the prototype
+              A Pololu 2811 high-side switch for default-off fan power, plus a
+              small 2N3904 transistor interface for the blower's PWM input.
+            </li>
+            <li>
+              A small 5 V buck converter to power the XIAO when the prototype
               moves from separate USB and 12 V supplies to one 12 V adapter.
             </li>
           </ul>
@@ -109,57 +114,85 @@
 
           <h2>How the pieces fit together</h2>
           <p>
-            A regulated 12 V input feeds the blower branch and the lower-voltage
-            electronics. The ESP32 drives the MOSFET gate, while the blower remains
-            electrically separate from the sensor circuitry as much as possible. The
-            MAX31856 talks to the ESP32 over SPI and handles the small thermocouple
-            signal, cold-junction compensation, and sensor fault reporting.
+            The updated design uses a documented four-wire blower rather than
+            trying to PWM an arbitrary two-wire motor. A regulated 12 V supply
+            feeds the blower through the Pololu 2811 high-side switch. The
+            blower's black lead stays on the common supply ground, while the
+            switch controls only its red positive lead. A separate maintained
+            disconnect in that positive path provides a physical way to remove
+            fan power.
           </p>
           <p>
-            The initial fan is a two-wire, 12 V blower controlled with slow on/off
-            decisions. That is an important constraint: a PWM-capable MOSFET does
-            not automatically make an arbitrary two-wire blower compatible with
-            supply PWM. The first version will use full-voltage switching with
-            hysteresis and minimum on/off times. If smooth speed control or stall
-            feedback becomes necessary, I will select a documented four-wire blower
-            and design its PWM and tachometer interface around that specific model.
+            Speed is controlled on the Delta's blue lead at 25 kHz. The XIAO's
+            GPIO10 drives a 2N3904 open-collector interface, which uses the
+            blower's internal pull-up and inverts the signal: the requested
+            percentage is the blue lead's HIGH-time percentage, not RPM or
+            airflow. The initial command range is 0% or 35–100%; values from
+            1–34% are rejected instead of pretending the blower can reliably
+            start there. The fan supply remains steady while speed changes.
           </p>
+          <p>
+            The yellow FG/tach lead is individually insulated and left
+            unconnected for this version. That keeps the interface explicit:
+            a command is not proof that the fan is turning, and this prototype
+            does not claim RPM, stall, or airflow feedback.
+          </p>
+          <figure class="wiring-diagram">
+            <img
+              src="../assets/smoker-fan-controller-wiring.png"
+              alt="Wiring diagram for the XIAO ESP32-C3, Delta four-wire PWM blower, Pololu high-side switch, transistor interface, thermocouple converter, and optional standalone power"
+              width="2000"
+              height="2600"
+              loading="lazy"
+            />
+            <figcaption>
+              The current prototype wiring: switched positive fan power,
+              separate 25 kHz PWM, USB bench power, and the optional
+              single-adapter supply.
+            </figcaption>
+          </figure>
 
           <h2>Safety is part of the design</h2>
           <p>
-            A network connection cannot be a requirement for safe temperature
-            control. The control loop should continue locally when Wi-Fi or the
-            router is unavailable, and it should never wait for a web request before
-            making its next decision. Wi-Fi is for settings, monitoring, and
-            alarms—not for keeping the fire-control loop alive.
+            The first firmware delivery is a supervised local-network manual
+            controller, not an autonomous thermostat. Every nonzero command
+            carries an expiring lease, so a disconnected client cannot leave
+            the fan running indefinitely. A future automatic control session
+            can continue locally through Wi-Fi loss, but network requests must
+            never block sensing or shutdown.
           </p>
           <p>
-            The intended default is fan off. The hardware should hold the fan off
-            during reset and startup, and the firmware should stop it for an open
-            probe, thermocouple-converter fault, stale measurement, overtemperature,
-            or local STOP command. A physical fan disconnect remains useful even if
-            the software is broken. These measures do not turn the project into a
-            certified unattended safety controller; they make the failure behavior
-            explicit and testable.
+            The intended default is fan off. GPIO3 controls the Pololu power
+            switch and has a pulldown; the switch's onboard slide must be
+            secured OFF so reset, brownout, and an unpowered MCU do not enable
+            the fan. The firmware should remove fan power for an open probe,
+            converter fault, stale measurement, overtemperature, expired lease,
+            or STOP command. A separate physical disconnect remains useful if
+            software is broken. These measures do not make this a certified
+            unattended safety controller; the circuit is still a design
+            proposal that requires bench measurements.
           </p>
 
           <h2>From prototype to PCB</h2>
           <p>
-            Once the blower and sensor behavior are understood, the next step is a
-            small custom board around an ESP32-C3 module, a 3.3 V buck converter, a
-            MAX31856, and the verified fan-driver circuit. The layout matters as
-            much as the schematic: the thermocouple connector and converter need a
-            quiet, thermally stable area, while the fan current and buck switching
-            loops need short, deliberate power paths. The antenna also needs its
-            keepout, especially if the electronics eventually live near a metal
-            smoker.
+            Once the blower and sensor behavior are understood, the next step
+            is a small carrier board around the XIAO ESP32-C3, MAX31856
+            breakout, high-side power switch, PWM transistor interface, and
+            protection components. The layout matters as much as the
+            schematic: the thermocouple connector and converter need a quiet,
+            thermally stable area, while the fan current and switching loops
+            need short, deliberate power paths. The antenna also needs its
+            keepout, especially if the electronics eventually live near a
+            metal smoker.
           </p>
           <p>
-            The board is not the whole system. The blower needs an adapter and a
-            way to limit uncontrolled airflow when it is off. The enclosure needs
-            protection from rain, grease, ash, and heat. The probe, cable, connector,
-            fuse, wiring, and power supply all need ratings that match the real
-            installation.
+            The board is not the whole system. The selected Delta is a compact
+            50 × 50 × 10.3 mm blower rated at 0.12 A nominal and 0.18 A
+            maximum, but its published 3.53 CFM rating is at zero static
+            pressure. The actual duct, damper, smoker restriction, enclosure,
+            probe, wiring, fuses, and power supply all need to be checked
+            against the installation rather than inferred from the nominal
+            number.
           </p>
 
           <h2>What I am trying to learn</h2>
@@ -172,17 +205,19 @@
             changes, and the slow response of a smoker.
           </p>
           <p>
-            The build sequence is intentionally conservative: manual fan testing,
-            then temperature hysteresis, then a more capable controller only if the
-            measurements justify it. Before any supervised smoker trials, I need to
-            test probe failures, resets, power cycling, Wi-Fi loss, fan startup, and
-            the cases where a sensor can return a plausible but incorrect reading.
+            The build sequence is intentionally conservative: verify the
+            sensor and PWM interface on the bench, then test explicit manual
+            commands and lease expiry, then evaluate temperature control only
+            if the measurements justify it. Before any supervised smoker
+            trials, I need to test probe failures, resets, power cycling,
+            Wi-Fi loss, fan startup, PWM levels, supply transients, and cases
+            where a sensor can return a plausible but incorrect reading.
           </p>
           <p>
-            For now, this is a design proposal rather than a finished product. The
-            first milestone is not a polished PCB—it is a small, well-understood
-            prototype that can control airflow predictably and fail with the fan
-            off.
+            For now, this is a design proposal rather than a finished product.
+            The first milestone is not a polished PCB—it is a small,
+            well-understood prototype that can control airflow predictably and
+            fail with the fan power off.
           </p>
         </div>
 
