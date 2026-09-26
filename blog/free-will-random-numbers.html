@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../blog.css" />
     <meta
       name="description"
-      content="An experiment using hashed Reddit comments to seed random number generation. Project notes by James Kozlowski."
+      content="The Random Number API experiment: from Reddit comments to public Bluesky replies, plus secure number, string, and UUID endpoints."
     />
     <meta name="theme-color" content="#f5f3eb" />
     <link
@@ -48,53 +48,71 @@
           >← Writing / Brain blobs</a
         >
         <header class="post-header">
-          <time class="post-date" datetime="2023-07"
-            >Jul 2023 · Experiments</time
+          <time class="post-date" datetime="2026-09"
+            >Sep 2026 · Experiments · Originally Jul 2023</time
           >
           <h1>Free Will and Random Numbers</h1>
           <p class="post-subtitle">
-            Can Reddit comments be truly random? My experiment with using social
-            media as an entropy source for random number generation.
+            An experiment in using public social media replies to seed
+            pseudorandom numbers—and why that is not secure randomness.
           </p>
         </header>
 
         <div class="post-content">
-          <h2>The Problem with PRNGs</h2>
+          <h2>The question</h2>
           <p>
-            Pseudo-random number generators (PRNGs) are deterministic. Given the
-            same seed, they'll produce the same sequence. For many applications,
-            this is fine. But what if you want true randomness?
+            Pseudorandom number generators produce deterministic sequences from
+            their seeds. I wondered whether people's public replies could make
+            an interesting seed. That was the original Reddit-comment
+            experiment; the current API uses replies on Bluesky instead.
           </p>
 
-          <h2>The Experiment: Reddit as Entropy</h2>
+          <h2>How the experiment works now</h2>
           <p>
-            I built an API that fetches the latest comments from Reddit, hashes
-            them, and uses the hash as a seed. The idea was to explore human
-            unpredictability as a source of randomness. Public comments and
-            hashing alone do not establish true randomness or cryptographic
-            security; this is a learning experiment, not a source for
-            security-sensitive random values.
+            The API reads public replies to posts in Bluesky's Discover feed,
+            hashes each reply's post URI and text with FNV-1a, and uses the
+            32-bit result to seed a separate PCG generator for one number. It
+            caches reply seeds in memory and fetches another post when they run
+            out. No Bluesky account or API key is required.
+          </p>
+          <p>
+            Public replies can be known, old, or repeated. Hashing them does
+            not add entropy or make the output unpredictable. This endpoint is
+            an educational experiment, not a source of secrets. If Bluesky is
+            unavailable, it returns an error instead of silently switching to
+            ordinary random numbers.
           </p>
 
-          <h2>Implementation</h2>
-          <ul>
-            <li>Fetch trending posts from multiple subreddits</li>
-            <li>Extract comment text and timestamps</li>
-            <li>Hash the combined data using SHA-256</li>
-            <li>
-              Use the hash bytes to seed a cryptographically secure random
-              number generator
-            </li>
-          </ul>
-
-          <h2>Results</h2>
+          <h2>Using the API</h2>
           <p>
-            The experiment also became the basis for a Discord bot. You can
-            explore the
-            <a href="https://github.com/jameskozlowski/randomnumberapi-go"
-              >Random Number API</a
+            <a href="https://www.randomnumberapi.com/">The hosted API</a>
+            documents number, string, UUIDv4, and Bluesky-reply-seeded number
+            endpoints. Try the
+            <a href="https://www.randomnumberapi.com/api/v1.0/randomblueskynumber?min=0&amp;max=100&amp;count=3"
+              >Bluesky reply example</a
+            >: it returns a JSON array of three numbers from 0 through 99.
+            <code>max</code> is exclusive, and <code>count</code> defaults to
+            one. The old <code>/api/v1.0/randomredditnumber</code> route is
+            gone; use <code>/api/v1.0/randomblueskynumber</code> instead.
+          </p>
+          <p>
+            For security-sensitive uses, the regular
+            <a href="https://www.randomnumberapi.com/api/v1.0/random?min=0&amp;max=100&amp;count=3&amp;secure=true"
+              >number endpoint</a
             >
-            and its
+            and string endpoint support <code>secure=true</code>, using
+            cryptographic randomness; UUIDv4 values are also cryptographically
+            random. The Bluesky endpoint rejects <code>secure=true</code>.
+            Invalid or repeated documented options now return HTTP 400 rather
+            than silently falling back to defaults. The public API allows
+            cross-origin GET requests from browser pages.
+          </p>
+          <p>
+            The experiment also inspired a Discord bot. See the
+            <a href="https://github.com/jameskozlowski/randomnumberapi-go"
+              >API source</a
+            >
+            and the
             <a href="https://github.com/jameskozlowski/randomnumberapi-bot"
               >companion bot</a
             >
