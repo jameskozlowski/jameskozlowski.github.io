@@ -85,6 +85,20 @@
   color: var(--text-secondary);
   font: 12px/1.6 var(--font-mono);
 }
+.post-content .post-figure {
+  margin: 34px 0 38px;
+}
+.post-content .post-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-color);
+}
+.post-content .post-figure figcaption {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font: 12px/1.6 var(--font-mono);
+}
 .post-footer {
   margin-top: 42px;
   padding-top: 25px;
