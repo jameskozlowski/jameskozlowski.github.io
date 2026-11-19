@@ -40,6 +40,52 @@
   --bar-bg: #28538c;
 }
 
+/* Shared workstation skin; leave the shareable 90s preview intact. */
+.workstation:not([data-style]) {
+  --bg-primary: #101715;
+  --panel-bg: #17221f;
+  --bg-secondary: #22332d;
+  --text-primary: #f1f4dc;
+  --text-secondary: #c8d6c9;
+  --text-muted: #a2b6a8;
+  --accent-primary: #9deac1;
+  --status-color: #f6c77e;
+  --border-color: #50695b;
+  --grid-dot: #a3d9bb30;
+  --bar-bg: #304c40;
+}
+
+.workstation[data-theme="light"]:not([data-style]) {
+  --bg-primary: #dae1d5;
+  --panel-bg: #f8f7eb;
+  --bg-secondary: #e1e6d8;
+  --text-primary: #172c24;
+  --text-secondary: #314a40;
+  --text-muted: #506258;
+  --accent-primary: #145d46;
+  --status-color: #945018;
+  --border-color: #788b7c;
+  --grid-dot: #324e3d36;
+}
+
+.workstation:not([data-style]) .panel-bar {
+  background: repeating-linear-gradient(0deg, transparent 0 3px, #0002 3px 4px), var(--bar-bg);
+  color: var(--bar-text);
+}
+
+.workstation:not([data-style]) :is(.hero, .post-header) h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.42em;
+  height: 0.14em;
+  margin-left: 0.1em;
+  background: var(--status-color);
+}
+
+.workstation:not([data-style]) :is(.hero, .directory-panel, .nav-content, .blog-post article) {
+  box-shadow: inset 1px 1px var(--edge-color), 3px 3px var(--border-color);
+}
+
 * {
   box-sizing: border-box;
 }
