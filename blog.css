@@ -83,6 +83,19 @@
 .bracket {
   color: var(--accent-primary);
 }
+
+[data-style="90s"] .blog-post article {
+  border: 3px double var(--border-color);
+}
+
+[data-style="90s"] .post-header {
+  border-bottom: 3px double var(--border-color);
+}
+
+[data-style="90s"] :is(.breadcrumb, .post-date, .back-link) {
+  font-family: var(--font-serif);
+}
+
 @media (max-width: 760px) {
   .post-subtitle {
     font-size: 17px;

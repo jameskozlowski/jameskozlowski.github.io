@@ -8,8 +8,10 @@ function savedTheme(fallback = "dark") {
   }
 }
 
-// This script runs before the stylesheets so a saved theme applies on first paint.
+// Resolve the appearance before the stylesheets load.
 root.dataset.theme = savedTheme();
+const is90sPreview = new URLSearchParams(location.search).get("style") === "90s";
+if (is90sPreview) root.dataset.style = "90s";
 
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.querySelector(".theme-toggle");
@@ -22,6 +24,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   applyTheme(root.dataset.theme);
+
+  // Keep preview links shareable without changing the default site.
+  if (is90sPreview) {
+    for (const link of document.querySelectorAll('a[href]:not([href^="#"])')) {
+      if (link.origin !== location.origin) continue;
+      if (link.pathname !== "/" && !link.pathname.endsWith(".html")) continue;
+
+      const url = new URL(link.href);
+      url.searchParams.set("style", "90s");
+      link.href = url.href;
+    }
+  }
+
   toggle.hidden = false;
   toggle.addEventListener("click", () => {
     const theme = root.dataset.theme === "dark" ? "light" : "dark";
