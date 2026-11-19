@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="James Kozlowski is a senior software developer in Fredericton, Canada. Backend systems, Go, open-source experiments, and notes from the workbench."
+      content="James Kozlowski is a software developer in Fredericton, New Brunswick. Read about his side projects, books, and backend work."
     />
-    <meta name="theme-color" content="#f5f3eb" />
-    <meta property="og:title" content="James Kozlowski — Developer & Maker" />
+    <meta name="theme-color" content="#0b111c" />
+    <meta property="og:title" content="James Kozlowski" />
     <meta
       property="og:description"
-      content="Backend systems, side projects, and a curiosity for how things work. Notes from a software developer in Fredericton, Canada."
+      content="Software developer in Fredericton, New Brunswick. Side projects, reading notes, and backend work."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jameskozlowski.com/" />
@@ -20,61 +20,48 @@
       content="https://jameskozlowski.com/assets/james-portrait.jpg"
     />
     <link rel="canonical" href="https://jameskozlowski.com/" />
-    <title>James Kozlowski — Developer & Maker</title>
+    <title>James Kozlowski</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="navbar">
-      <nav class="nav-content" aria-label="Main navigation">
-        <a href="#home" class="logo" aria-label="James Kozlowski home"
-          >jk<span>.</span></a
-        >
+    <header id="home" class="navbar">
+      <nav class="nav-content container" aria-label="Main navigation">
+        <a href="#home" class="logo">James Kozlowski</a>
+        <button class="theme-toggle" type="button" hidden>Light mode</button>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
           <li><a href="#brain-blobs">Writing</a></li>
-          <li>
-            <a href="#contact">Say hello <span aria-hidden="true">↗</span></a>
-          </li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <main id="main" tabindex="-1">
-      <section id="home" class="hero container" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="status-dot" aria-hidden="true"></span> Developer.
-            Maker. Always curious.
-          </p>
-          <h1 id="hero-title">
-            James<br />Kozlowski<span class="accent">.</span>
-          </h1>
-          <p class="hero-intro">
-            Building software.<br /><span class="serif"
-              >Understanding the pieces.</span
-            >
-          </p>
-          <p class="hero-description">
-            I’m a senior software developer at MinuteBox, working on backend
-            systems with Go, TypeScript, and Google Cloud. Based in Fredericton,
-            New Brunswick.
-          </p>
-          <div class="hero-links">
-            <a href="#projects" class="btn"
-              >Explore my work <span aria-hidden="true">↗</span></a
-            >
-            <a href="#brain-blobs" class="text-link"
-              >Read my notes <span aria-hidden="true">→</span></a
-            >
-          </div>
+    <main id="main" class="home-layout container" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="panel-bar">
+          <span>Personal homepage</span>
+          <span>index.html</span>
         </div>
-        <figure class="hero-photo">
-          <div class="photo-frame">
+        <div class="hero-body">
+          <div>
+            <p class="hero-location">Fredericton, New Brunswick</p>
+            <h1 id="hero-title">James Kozlowski</h1>
+            <p class="hero-description">
+              I’m a software developer at MinuteBox, where I work on backend
+              systems and integrations. I write here about side projects,
+              hardware experiments, and books I’ve found useful.
+            </p>
+            <div class="inline-links">
+              <a href="https://github.com/jameskozlowski">GitHub</a>
+              <a href="https://www.linkedin.com/in/james-kozlowski/">LinkedIn</a>
+            </div>
+          </div>
+          <figure class="hero-photo">
             <img
               src="assets/james-portrait.jpg"
               alt="James enjoying a coffee by an outdoor fire in the snow"
@@ -82,183 +69,186 @@
               height="960"
               fetchpriority="high"
             />
-          </div>
-          <figcaption>
-            <span>AFK, somewhere outside.</span
-            ><span aria-hidden="true">↗</span>
-          </figcaption>
-          <span class="photo-note" aria-hidden="true"
-            >More than a terminal window.</span
-          >
-        </figure>
-        <div class="hero-footnote">
-          <span>From low-level details to the bigger picture.</span
-          ><a href="#about"
-            >A little about me <span aria-hidden="true">↓</span></a
+            <figcaption>Coffee by the fire.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section
+        id="brain-blobs"
+        class="directory-panel"
+        aria-labelledby="writing-title"
+      >
+        <div class="panel-bar">
+          <h2 id="writing-title">Writing</h2>
+        </div>
+        <div class="writing-list">
+          <a class="writing-item" href="blog/smoker-fan-controller.html">
+            <div class="writing-meta">
+              <time datetime="2026-09">Sep 2026</time>
+              <span>Hardware &amp; experiments</span>
+            </div>
+            <div>
+              <h3>Designing a Wi-Fi Smoker Fan Controller</h3>
+              <p>Electronics and temperature control for a smoker blower.</p>
+            </div>
+          </a>
+          <a class="writing-item" href="blog/switchboard-ai-coding-agents.html">
+            <div class="writing-meta">
+              <time datetime="2026-09">Sep 2026</time>
+              <span>Tools &amp; workflow</span>
+            </div>
+            <div>
+              <h3>Building Switchboard: Workspaces for AI Coding Agents</h3>
+              <p>A control panel for managing personal agent workspaces.</p>
+            </div>
+          </a>
+          <a class="writing-item" href="blog/free-will-random-numbers.html">
+            <div class="writing-meta">
+              <time datetime="2026-09">Sep 2026</time>
+              <span>Experiments</span>
+            </div>
+            <div>
+              <h3>Free Will and Random Numbers</h3>
+              <p>From Reddit comments to public Bluesky replies as seeds.</p>
+            </div>
+          </a>
+          <a class="writing-item" href="blog/ai-coding-setup.html">
+            <div class="writing-meta">
+              <time datetime="2026-02">Feb 2026</time>
+              <span>Tools &amp; workflow</span>
+            </div>
+            <div>
+              <h3>J{AI}MES — My AI Coding Setup</h3>
+              <p>Experiments with opencode and a personal AI coding workflow.</p>
+            </div>
+          </a>
+          <a class="writing-item" href="blog/zero-to-production-rust.html">
+            <div class="writing-meta">
+              <time datetime="2025-11">Nov 2025</time>
+              <span>Reading notes</span>
+            </div>
+            <div>
+              <h3>Zero to Production in Rust</h3>
+              <p>Building along with Luca Palmieri’s guide to production-ready Rust.</p>
+            </div>
+          </a>
+          <a class="writing-item" href="blog/lets-go-books.html">
+            <div class="writing-meta">
+              <time datetime="2023-07">Jul 2023</time>
+              <span>Reading notes</span>
+            </div>
+            <div>
+              <h3>Let’s Go &amp; Let’s Go Further</h3>
+              <p>Two books by Alex Edwards that helped deepen my Go skills.</p>
+            </div>
+          </a>
+          <a class="writing-item" href="blog/chip8-emulator.html">
+            <div class="writing-meta">
+              <time datetime="2017-04">Apr 2017</time>
+              <span>Systems programming</span>
+            </div>
+            <div>
+              <h3>Building a Chip-8 Emulator in C</h3>
+              <p>From the instruction set to a debugger and disassembler.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section
+        id="projects"
+        class="directory-panel"
+        aria-labelledby="projects-title"
+      >
+        <div class="panel-bar">
+          <h2 id="projects-title">Projects</h2>
+        </div>
+        <div class="project-list">
+          <article class="project-item">
+            <div>
+              <h3>Chip8-C</h3>
+              <p class="project-meta">C and C++</p>
+            </div>
+            <div>
+              <p>
+                A Chip-8 emulator with a C++ frontend, debugger, disassembler,
+                and assembler.
+              </p>
+              <div class="inline-links">
+                <a href="https://github.com/jameskozlowski/Chip8-C">Source</a>
+                <a href="blog/chip8-emulator.html">Write-up</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-item">
+            <div>
+              <h3>Random Number API</h3>
+              <p class="project-meta">Go and Docker</p>
+            </div>
+            <div>
+              <p>
+                A Go API for random numbers, strings, and UUIDs. It has secure
+                options for secrets and a separate, non-cryptographic experiment
+                seeded by public Bluesky replies.
+              </p>
+              <div class="inline-links">
+                <a href="https://github.com/jameskozlowski/randomnumberapi-go">Source</a>
+                <a href="https://www.randomnumberapi.com/">Try the API</a>
+                <a href="blog/free-will-random-numbers.html">Write-up</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-item">
+            <div>
+              <h3>Random Number Bot</h3>
+              <p class="project-meta">Go and Discord</p>
+            </div>
+            <div>
+              <p>A Discord bot that brings the Random Number API into chat.</p>
+              <div class="inline-links">
+                <a href="https://github.com/jameskozlowski/randomnumberapi-bot">Source</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="panel-footer">
+          <a href="https://github.com/jameskozlowski?tab=repositories"
+            >All repositories on GitHub</a
           >
         </div>
       </section>
 
       <section
         id="about"
-        class="section section-tinted"
+        class="section section-layout"
         aria-labelledby="about-title"
       >
-        <div class="container section-layout">
-          <div class="section-heading">
-            <p class="eyebrow">01 / About</p>
-            <h2 id="about-title">Curiosity is<br />the common thread.</h2>
-          </div>
-          <div class="about-copy">
-            <p class="lead">
-              From embedded software and thermal testing equipment to security
-              products and cloud APIs, I like figuring out how things work—and
-              making them work better.
-            </p>
-            <p>
-              My background spans hands-on development, leading R&amp;D teams,
-              and troubleshooting systems when the answer isn’t obvious. Today,
-              I build integrations and internal APIs at MinuteBox, and help
-              shape our AI development tools.
-            </p>
-            <p>
-              Outside of work, that same curiosity turns into emulators,
-              experiments with randomness, and an ever-growing reading list.
-            </p>
-            <div class="toolbox">
-              <h3 class="eyebrow">Tools I work with</h3>
-              <ul class="tags" aria-label="Technologies">
-                <li>Go</li>
-                <li>TypeScript</li>
-                <li>Google Cloud</li>
-                <li>PostgreSQL</li>
-                <li>Java</li>
-                <li>Python</li>
-                <li>Bash</li>
-                <li>Docker</li>
-                <li>Git</li>
-                <li>Linux</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="projects"
-        class="section container"
-        aria-labelledby="projects-title"
-      >
-        <div class="section-top">
-          <div>
-            <p class="eyebrow">02 / Selected projects</p>
-            <h2 id="projects-title">Built to learn.<br />Shared to explore.</h2>
-          </div>
-          <a class="text-link" href="https://github.com/jameskozlowski"
-            >All repositories <span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="project-grid">
-          <article class="project-card">
-            <div class="project-top">
-              <span class="project-symbol" aria-hidden="true">[ 0x200 ]</span
-              ><span class="eyebrow">01</span>
-            </div>
-            <ul class="tags">
-              <li>C</li>
-              <li>C++</li>
-              <li>Emulation</li>
-            </ul>
-            <h3>Chip8-C</h3>
-            <p>
-              A small machine, a deep rabbit hole. A Chip-8 emulator with a C++
-              frontend, debugger, disassembler, and assembler.
-            </p>
-            <div class="card-links">
-              <a
-                class="text-link"
-                href="https://github.com/jameskozlowski/Chip8-C"
-                >View source <span aria-hidden="true">↗</span></a
-              ><a href="blog/chip8-emulator.html"
-                >The story <span aria-hidden="true">→</span></a
-              >
-            </div>
-          </article>
-          <article class="project-card">
-            <div class="project-top">
-              <span class="project-symbol" aria-hidden="true">{ rand() }</span
-              ><span class="eyebrow">02</span>
-            </div>
-            <ul class="tags">
-              <li>Go</li>
-              <li>Docker</li>
-              <li>API</li>
-            </ul>
-            <h3>Random Number API</h3>
-            <p>
-              Numbers, strings, and UUIDs from a Go API, with secure options
-              for secrets and a separate experiment seeded by public Bluesky
-              replies. The reply-seeded numbers are not cryptographically secure.
-            </p>
-            <div class="card-links">
-              <a
-                class="text-link"
-                href="https://github.com/jameskozlowski/randomnumberapi-go"
-                >View source <span aria-hidden="true">↗</span></a
-              ><a href="https://www.randomnumberapi.com/"
-                >Try the API <span aria-hidden="true">↗</span></a
-              ><a href="blog/free-will-random-numbers.html"
-                >The story <span aria-hidden="true">→</span></a
-              >
-            </div>
-          </article>
-          <article class="project-card">
-            <div class="project-top">
-              <span class="project-symbol" aria-hidden="true">/roll</span
-              ><span class="eyebrow">03</span>
-            </div>
-            <ul class="tags">
-              <li>Go</li>
-              <li>Docker</li>
-              <li>Discord</li>
-            </ul>
-            <h3>A little randomness</h3>
-            <p>
-              A Discord bot that brings the Random Number API into chat. A small
-              companion project connecting an experiment to a community.
-            </p>
-            <div class="card-links">
-              <a
-                class="text-link"
-                href="https://github.com/jameskozlowski/randomnumberapi-bot"
-                >View source <span aria-hidden="true">↗</span></a
-              >
-            </div>
-          </article>
+        <h2 id="about-title">About</h2>
+        <div class="about-copy">
+          <p>
+            I started out writing software for thermal testing equipment.
+            Later I worked on Linux security products at IBM. At MinuteBox,
+            I build integrations and internal APIs with Go, TypeScript, and
+            Google Cloud.
+          </p>
+          <p>
+            On my own time I’ve written an emulator, built a random number
+            API, and tinkered with a Wi-Fi controller for my smoker.
+          </p>
         </div>
       </section>
 
       <section
         id="experience"
-        class="section section-tinted"
+        class="section"
         aria-labelledby="experience-title"
       >
-        <div class="container section-layout">
-          <div class="section-heading">
-            <p class="eyebrow">03 / The path so far</p>
-            <h2 id="experience-title">
-              Different domains.<br />Same drive to build.
-            </h2>
-            <p class="section-summary">
-              Software, systems, and the people behind them.
-            </p>
-          </div>
+        <div class="section-layout">
+          <h2 id="experience-title">Experience</h2>
           <div class="experience-list">
             <article class="experience-item">
-              <div class="role-meta">
-                <span>Nov 2023 — Present</span
-                ><span class="current-label">Current</span>
-              </div>
+              <p class="role-meta">Nov 2023 – Present</p>
               <h3>Senior Software Developer</h3>
               <p class="company">MinuteBox</p>
               <p>
@@ -268,7 +258,7 @@
               </p>
             </article>
             <article class="experience-item">
-              <div class="role-meta"><span>May 2021 — Sep 2023</span></div>
+              <p class="role-meta">May 2021 – Sep 2023</p>
               <h3>Security Software Developer</h3>
               <p class="company">IBM</p>
               <p>
@@ -277,7 +267,7 @@
               </p>
             </article>
             <article class="experience-item">
-              <div class="role-meta"><span>May 2020 — May 2021</span></div>
+              <p class="role-meta">May 2020 – May 2021</p>
               <h3>Product Engineer</h3>
               <p class="company">IBM</p>
               <p>
@@ -287,7 +277,7 @@
               </p>
             </article>
             <article class="experience-item">
-              <div class="role-meta"><span>Nov 2012 — Apr 2020</span></div>
+              <p class="role-meta">Nov 2012 – Apr 2020</p>
               <h3>R&amp;D Team Lead &amp; Software Developer</h3>
               <p class="company">Thermtest</p>
               <p>
@@ -298,9 +288,9 @@
             </article>
           </div>
         </div>
-        <div class="container credentials-grid">
+        <div class="credentials-grid">
           <div>
-            <h3 class="eyebrow">Education</h3>
+            <h3>Education</h3>
             <div class="credential">
               <h4>Certificate in Software Development</h4>
               <p>University of New Brunswick · 2016–2018</p>
@@ -311,7 +301,7 @@
             </div>
           </div>
           <div>
-            <h3 class="eyebrow">Patent work</h3>
+            <h3>Patent work</h3>
             <div class="credential">
               <h4>Temperature Control Device and Method</h4>
               <p>US 16/592,858 · Filed Oct 4, 2019</p>
@@ -332,174 +322,42 @@
       </section>
 
       <section
-        id="brain-blobs"
-        class="section container"
-        aria-labelledby="writing-title"
-      >
-        <div class="section-top">
-          <div>
-            <p class="eyebrow">04 / Brain blobs</p>
-            <h2 id="writing-title">Notes from the workbench.</h2>
-          </div>
-          <p class="section-summary">
-            Things I’ve built, books I’ve read,<br />and ideas worth writing
-            down.
-          </p>
-        </div>
-        <div class="writing-list">
-          <a class="writing-item" href="blog/smoker-fan-controller.html"
-            ><div class="writing-meta">
-              <time datetime="2026-09">Sep 2026</time
-              ><span>Hardware &amp; experiments</span>
-            </div>
-            <div>
-              <h3>Designing a Wi-Fi Smoker Fan Controller</h3>
-              <p>
-                A first look at the electronics and control strategy for a
-                temperature-controlled smoker blower.
-              </p>
-            </div>
-            <span class="writing-arrow" aria-hidden="true">↗</span></a
-          >
-          <a class="writing-item" href="blog/switchboard-ai-coding-agents.html"
-            ><div class="writing-meta">
-              <time datetime="2026-09">Sep 2026</time
-              ><span>Tools &amp; workflow</span>
-            </div>
-            <div>
-              <h3>Building Switchboard: Workspaces for AI Coding Agents</h3>
-              <p>
-                Building a control panel for personal agent workspaces, shared
-                skills, and consistent AI workflows.
-              </p>
-            </div>
-            <span class="writing-arrow" aria-hidden="true">↗</span></a
-          >
-          <a class="writing-item" href="blog/ai-coding-setup.html"
-            ><div class="writing-meta">
-              <time datetime="2026-02">Feb 2026</time
-              ><span>Tools &amp; workflow</span>
-            </div>
-            <div>
-              <h3>J{AI}MES — My AI Coding Setup</h3>
-              <p>
-                Experiments with opencode and a personal AI coding workflow.
-              </p>
-            </div>
-            <span class="writing-arrow" aria-hidden="true">↗</span></a
-          >
-          <a class="writing-item" href="blog/zero-to-production-rust.html"
-            ><div class="writing-meta">
-              <time datetime="2025-11">Nov 2025</time><span>Reading notes</span>
-            </div>
-            <div>
-              <h3>Zero to Production in Rust</h3>
-              <p>
-                Building along with Luca Palmieri’s guide to production-ready
-                Rust.
-              </p>
-            </div>
-            <span class="writing-arrow" aria-hidden="true">↗</span></a
-          >
-          <a class="writing-item" href="blog/lets-go-books.html"
-            ><div class="writing-meta">
-              <time datetime="2023-07">Jul 2023</time><span>Reading notes</span>
-            </div>
-            <div>
-              <h3>Let’s Go &amp; Let’s Go Further</h3>
-              <p>Two books by Alex Edwards that helped deepen my Go skills.</p>
-            </div>
-            <span class="writing-arrow" aria-hidden="true">↗</span></a
-          >
-          <a class="writing-item" href="blog/free-will-random-numbers.html"
-            ><div class="writing-meta">
-              <time datetime="2026-09">Sep 2026</time><span>Experiments</span>
-            </div>
-            <div>
-              <h3>Free Will and Random Numbers</h3>
-              <p>From Reddit comments to public Bluesky replies as seeds.</p>
-            </div>
-            <span class="writing-arrow" aria-hidden="true">↗</span></a
-          >
-          <a class="writing-item" href="blog/chip8-emulator.html"
-            ><div class="writing-meta">
-              <time datetime="2017-04">Apr 2017</time
-              ><span>Systems programming</span>
-            </div>
-            <div>
-              <h3>Building a Chip-8 Emulator in C</h3>
-              <p>From the instruction set to a debugger and disassembler.</p>
-            </div>
-            <span class="writing-arrow" aria-hidden="true">↗</span></a
-          >
-        </div>
-      </section>
-
-      <section
         id="hobbies"
-        class="section section-tinted"
+        class="section offscreen-grid"
         aria-labelledby="hobbies-title"
       >
-        <div class="container offscreen-grid">
-          <figure class="outdoor-photo">
-            <img
-              src="assets/james-outdoors.jpg"
-              alt="James and a hiking companion overlooking a snowy forest valley"
-              width="675"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>A different kind of exploring.</figcaption>
-          </figure>
-          <div>
-            <p class="eyebrow">05 / Away from the keyboard</p>
-            <h2 id="hobbies-title">Not everything<br />needs a screen.</h2>
-            <p class="lead">
-              Sometimes the best thing to build is something you can hold.
-              Sometimes it’s just a good day outside.
-            </p>
-            <div class="interest">
-              <h3>Trails &amp; fresh air</h3>
-              <p>Exploring new paths, getting outside, and staying active.</p>
-            </div>
-            <div class="interest">
-              <h3>Wood, metal &amp; making</h3>
-              <p>
-                Woodworking and welding scratch a different kind of creative
-                itch.
-              </p>
-            </div>
-            <div class="interest">
-              <h3>A good pour</h3>
-              <p>
-                Exploring whiskey, scotch, and bourbon—and the craft behind
-                them.
-              </p>
-            </div>
-          </div>
+        <div>
+          <h2 id="hobbies-title">Outside of work</h2>
+          <p>
+            I like hiking, woodworking, and welding. I’m also always up for
+            a recommendation for a good whisky or a trail I haven’t tried.
+          </p>
         </div>
+        <figure class="outdoor-photo">
+          <img
+            src="assets/james-outdoors.jpg"
+            alt="James and a hiking companion overlooking a snowy forest valley"
+            width="675"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Out for a winter hike.</figcaption>
+        </figure>
       </section>
 
       <section
         id="contact"
-        class="contact-section container"
+        class="section section-layout"
         aria-labelledby="contact-title"
       >
-        <p class="eyebrow">06 / Keep in touch</p>
-        <h2 id="contact-title">
-          Good things start<br />with <span class="serif">a conversation.</span>
-        </h2>
-        <p>
-          Want to talk software, swap a book recommendation, or compare notes on
-          something you’re building?
-        </p>
-        <div class="hero-links">
-          <a class="btn" href="https://www.linkedin.com/in/james-kozlowski/"
-            >Say hello on LinkedIn <span aria-hidden="true">↗</span></a
-          ><a class="text-link" href="https://github.com/jameskozlowski"
-            >Find me on GitHub <span aria-hidden="true">↗</span></a
-          >
+        <h2 id="contact-title">Contact</h2>
+        <div>
+          <p>You can find me on GitHub or send me a message on LinkedIn.</p>
+          <div class="inline-links">
+            <a href="https://github.com/jameskozlowski">GitHub</a>
+            <a href="https://www.linkedin.com/in/james-kozlowski/">LinkedIn</a>
+          </div>
         </div>
       </section>
     </main>
@@ -507,8 +365,7 @@
     <footer class="footer">
       <div class="container">
         <p>© <span data-year>2026</span> James Kozlowski</p>
-        <p>Made with curiosity. Hosted on GitHub Pages.</p>
-        <a href="#home">Back to top <span aria-hidden="true">↑</span></a>
+        <a href="#home">Back to top ↑</a>
       </div>
     </footer>
   </body>

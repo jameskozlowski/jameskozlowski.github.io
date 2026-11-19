@@ -1,37 +1,33 @@
 .blog-post {
-  padding: 65px 0 85px;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
   min-height: 75vh;
 }
 .blog-post article {
-  width: min(720px, calc(100% - 48px));
+  width: min(48rem, calc(100% - 1.5rem));
+  padding: clamp(1rem, 4vw, 2.5rem);
+  border: 1px solid var(--border-color);
+  border-top: 0.375rem solid var(--bar-bg);
+  background: var(--panel-bg);
   margin-inline: auto;
 }
 .breadcrumb {
   display: inline-block;
-  margin-bottom: 40px;
-  color: var(--accent-primary);
-  font: 11px/1.6 var(--font-mono);
-  text-decoration: none;
-}
-.breadcrumb:hover {
-  text-decoration: underline;
+  margin-bottom: 2rem;
+  font: 0.875rem/1.4 var(--font-mono);
 }
 .post-header {
   margin-bottom: 34px;
   padding-bottom: 32px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px dashed var(--border-color);
 }
 .post-date {
   display: block;
-  font: 11px/1.6 var(--font-mono);
-  color: var(--accent-primary);
-  margin-bottom: 18px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--status-color);
+  font: 0.8125rem/1.5 var(--font-mono);
+  margin-bottom: 0.875rem;
 }
 .post-header h1 {
-  font-size: clamp(34px, 5vw, 54px);
-  letter-spacing: -2px;
+  font-size: clamp(1.65rem, 4.5vw, 2.65rem);
   line-height: 1.12;
   margin-bottom: 20px;
   overflow-wrap: break-word;
@@ -42,8 +38,7 @@
   line-height: 1.6;
 }
 .post-content h2 {
-  font-size: 24px;
-  letter-spacing: -0.6px;
+  font-size: 1.35rem;
   margin: 34px 0 12px;
 }
 .post-content p,
@@ -62,42 +57,20 @@
 .post-content li {
   margin-bottom: 7px;
 }
-.post-content a {
-  color: var(--accent-primary);
-}
 .post-content code {
   font-family: var(--font-mono);
   font-size: 0.85em;
   background: var(--bg-secondary);
   padding: 2px 5px;
-  border-radius: 3px;
 }
-.post-content .wiring-diagram {
-  margin: 34px 0 38px;
+
+.post-content :is(.wiring-diagram, .post-figure) {
+  margin: 2rem 0;
 }
-.post-content .wiring-diagram img {
+
+.post-content :is(.wiring-diagram, .post-figure) img {
   width: 100%;
-  height: auto;
   border: 1px solid var(--border-color);
-}
-.post-content .wiring-diagram figcaption {
-  margin-top: 10px;
-  color: var(--text-secondary);
-  font: 12px/1.6 var(--font-mono);
-}
-.post-content .post-figure {
-  margin: 34px 0 38px;
-}
-.post-content .post-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--border-color);
-}
-.post-content .post-figure figcaption {
-  margin-top: 10px;
-  color: var(--text-secondary);
-  font: 12px/1.6 var(--font-mono);
 }
 .post-footer {
   margin-top: 42px;
@@ -105,27 +78,12 @@
   border-top: 1px solid var(--border-color);
 }
 .back-link {
-  color: var(--accent-primary);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
-.back-link:hover {
-  text-decoration: underline;
+  font: 0.875rem/1.4 var(--font-mono);
 }
 .bracket {
   color: var(--accent-primary);
 }
 @media (max-width: 760px) {
-  .blog-post {
-    padding: 35px 0 55px;
-  }
-  .breadcrumb {
-    margin-bottom: 28px;
-  }
-  .post-header h1 {
-    letter-spacing: -1.3px;
-  }
   .post-subtitle {
     font-size: 17px;
   }
